@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Simple.Domain.csproj" />
+    <ProjectReference Include="..\..\..\src\Domain\Lemolsoft.Framework.Domain.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>
