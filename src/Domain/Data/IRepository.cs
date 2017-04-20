@@ -1,13 +1,16 @@
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Lemolsoft.Framework.Domain.Data
 {
-    public interface IRepository<T>  where T : IEntity
+    public interface IRepository<TEntity>  where TEntity : IEntity
     {
-        T Find(Guid id);
-        IQueryable<T> Query();
-        void Create(T item);
-        void Update(T item);
+        TEntity Find(Guid id);
+        IQueryable<TEntity> Query();
+        IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] inculde);
+        void Create(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }
