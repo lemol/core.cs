@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Applica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application.Services", "Application.Services\Lemolsoft.Framework.Application.Services.csproj", "{5DBADE45-C0D0-4E50-AB94-C87655381821}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application.WebApi", "Application.WebApi\Lemolsoft.Framework.Application.WebApi.csproj", "{8D8B7010-FD55-4C2F-8819-F369B8084C86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{5DBADE45-C0D0-4E50-AB94-C87655381821}.Release|x64.Build.0 = Release|x64
 		{5DBADE45-C0D0-4E50-AB94-C87655381821}.Release|x86.ActiveCfg = Release|x86
 		{5DBADE45-C0D0-4E50-AB94-C87655381821}.Release|x86.Build.0 = Release|x86
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Debug|x64.ActiveCfg = Debug|x64
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Debug|x64.Build.0 = Debug|x64
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Debug|x86.ActiveCfg = Debug|x86
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Debug|x86.Build.0 = Debug|x86
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Release|x64.ActiveCfg = Release|x64
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Release|x64.Build.0 = Release|x64
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Release|x86.ActiveCfg = Release|x86
+		{8D8B7010-FD55-4C2F-8819-F369B8084C86}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal

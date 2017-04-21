@@ -42,7 +42,7 @@ namespace Lemolsoft.Framework.Data.EF
 
         public IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] include)
         {
-            return include.Aggregate(_dbSet, (acc, act) => acc.Include(act) as DbSet<TEntity>);
+            return include.Aggregate(_dbSet.AsQueryable(), (acc, act) => acc.Include(act));
         }
 
         public void Update(TEntity entity)

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Lemolsoft.Framework.Domain;
 using Lemolsoft.Framework.Domain.Data;
 
@@ -29,6 +31,11 @@ namespace Lemolsoft.Framework.Application.Services
         {
             _mapper = mapper;
             _repository = repository;
+            
+            var retrieveService = (RetrieveService<TRepository, TEntity>)_retrieveService;
+            
+            retrieveService.FindIncludes = FindIncludes;
+            retrieveService.GetAllIncludes = GetAllIncludes;
         }
         #endregion
 
@@ -84,6 +91,24 @@ namespace Lemolsoft.Framework.Application.Services
         public virtual Guid Create(TEditDto dto) => _editService.Create(dto);
         public virtual void Update(Guid id, TEditDto dto) => _editService.Update(id, dto);
         public virtual void Delete(Guid id) => _editService.Delete(id);
+        #endregion
+
+        #region Virtuais
+        protected virtual IEnumerable<Expression<Func<TEntity, object>>> GetAllIncludes
+        {
+            get
+            {
+                return FindIncludes;
+            }
+        }
+
+        protected virtual IEnumerable<Expression<Func<TEntity, object>>> FindIncludes
+        {
+            get
+            {
+                return Enumerable.Empty<Expression<Func<TEntity, object>>>();
+            }
+        }
         #endregion
     }
 }
