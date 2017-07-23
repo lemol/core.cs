@@ -9,5 +9,9 @@ namespace Lemolsoft.Framework.Domain
         {
             return Guid.NewGuid();
         }
+        protected void NewEntity()
+        {
+            Id = GenerateId();
+        }
     }
 }
