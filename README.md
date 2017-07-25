@@ -1,3 +1,3 @@
-# framework.cs
+# core.cs
 
-DDD &amp; Architecture Libraries for .Net (Framework|Core)
+DDD &amp; Architecture Libraries for .Net{Framework|Core}
