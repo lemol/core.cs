@@ -1,4 +1,4 @@
-using Lemolsoft.Framework.Domain;
+using Core.Domain;
 
 namespace Simple.Domain.Model
 {

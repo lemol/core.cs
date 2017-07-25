@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Lemolsoft.Framework.Infrastructure;
-using Lemolsoft.Framework.Domain;
-using Lemolsoft.Framework.Domain.Data;
+using Core.Infrastructure;
+using Core.Domain;
+using Core.Domain.Data;
 
-namespace Lemolsoft.Framework.Application.Services
+namespace Core.Application.Services
 {
     public abstract class CrudService<TEntity, TIdentity, TEditDto> : CrudService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TEditDto>
         where TEntity : IEntity<TIdentity>

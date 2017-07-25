@@ -7,7 +7,7 @@
         {
             "taskName": "test",
             "args": [
-                "${workspaceRoot}/src/Domain.Test/Lemolsoft.Framework.Domain.Test.csproj"
+                "${workspaceRoot}/src/Core/Domain.Test/Core.Domain.Test.csproj"
             ],
             "isTestCommand": true,
             "showOutput": "always",

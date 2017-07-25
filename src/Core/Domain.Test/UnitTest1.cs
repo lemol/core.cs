@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Domain.Test
+namespace Core.Domain.Test
 {
     public class UnitTest1
     {

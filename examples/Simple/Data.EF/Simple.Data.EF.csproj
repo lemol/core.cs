@@ -2,8 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Simple.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Domain\Lemolsoft.Framework.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Data.EF\Lemolsoft.Framework.Data.EF.csproj" />
+    <ProjectReference Include="..\..\..\src\Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\..\..\src\Data.EF\Core.Data.EF.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lemolsoft.Framework.Domain
+namespace Core.Domain
 {
     public interface IEntity<TIdentity>
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Lemolsoft.Framework.Application.Services
+namespace Core.Application.Services
 {
     public interface IRetrieveService<TIdentity>
     {

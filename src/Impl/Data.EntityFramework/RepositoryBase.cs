@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Lemolsoft.Framework.Domain.Data;
-using Lemolsoft.Framework.Domain;
+using Core.Domain.Data;
+using Core.Domain;
 using System.Linq.Expressions;
 
-namespace Lemolsoft.Framework.Data.EntityFramework
+namespace Core.Data.EntityFramework
 {
     public class RepositoryBase<TDbContext, TEntity, TIdentity> : IRepository<TEntity, TIdentity>
         where TEntity : class, IEntity<TIdentity>

@@ -1,4 +1,4 @@
-namespace Lemolsoft.Framework.Domain.Data
+namespace Core.Domain.Data
 {
     public interface IUnitOfWork
     {

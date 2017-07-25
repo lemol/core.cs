@@ -6,9 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/src/Domain.Test/bin/Debug/netstandard2.0/Lemolsoft.Framework.Domain.Test.dll",
+            "program": "${workspaceRoot}/src/Core/Domain.Test/bin/Debug/netstandard2.0/Core.Domain.Test.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/src/Domain.Test",
+            "cwd": "${workspaceRoot}/src/Core/Domain.Test",
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"

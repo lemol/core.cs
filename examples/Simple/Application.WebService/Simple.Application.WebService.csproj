@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Simple.Domain.csproj" />
     <ProjectReference Include="..\Data.Odbc\Simple.Data.Odbc.csproj" />
-    <ProjectReference Include="..\..\..\src\Domain\Lemolsoft.Framework.Domain.csproj" />
+    <ProjectReference Include="..\..\..\src\Domain\Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

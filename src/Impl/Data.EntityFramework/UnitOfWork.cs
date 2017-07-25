@@ -1,8 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-using Lemolsoft.Framework.Domain.Data;
+using Core.Domain.Data;
 
-namespace Lemolsoft.Framework.Data.EntityFramework
+namespace Core.Data.EntityFramework
 {
     public class UnitOfWork<TDbContext> : IUnitOfWork
         where TDbContext : DbContext

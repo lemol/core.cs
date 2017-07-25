@@ -7,6 +7,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0-preview2-final" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Application.Services\Lemolsoft.Framework.Application.Services.csproj" />
+    <ProjectReference Include="..\..\Core\Application.Services\Core.Application.Services.csproj" />
   </ItemGroup>
 </Project>

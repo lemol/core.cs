@@ -1,8 +1,8 @@
 using System;
-using Lemolsoft.Framework.Domain;
-using Lemolsoft.Framework.Domain.Data;
+using Core.Domain;
+using Core.Domain.Data;
 
-namespace Lemolsoft.Framework.Application.Services
+namespace Core.Application.Services
 {
     public abstract class EditServiceBase<TRepository, TEntity, TIdentity, TEditDto> : IEditService<TIdentity, TEditDto>
         where TEntity : IEntity<TIdentity>

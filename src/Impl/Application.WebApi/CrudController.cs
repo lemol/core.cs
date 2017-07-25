@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Lemolsoft.Framework.Application.Services;
+using Core.Application.Services;
 using System;
 
-namespace Lemolsoft.Framework.Application.WebApi
+namespace Core.Application.WebApi
 {
     public class CrudController<TService, TIdentity, TReadDto, TEditDto> : Controller
         where TService : ICrudService<TIdentity, TEditDto>

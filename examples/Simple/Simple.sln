@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.WebService", "Application.WebService\Simple.Application.WebService.csproj", "{93ACA94D-6071-4D34-9769-9C6ECE53AD6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Domain", "..\..\src\Domain\Lemolsoft.Framework.Domain.csproj", "{E10C41C7-84E7-4D46-9EE2-5129EA9E5393}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain", "..\..\src\Domain\Core.Domain.csproj", "{E10C41C7-84E7-4D46-9EE2-5129EA9E5393}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Domain", "Domain\Simple.Domain.csproj", "{7414027E-BB46-40F1-A032-4A04B2EE3953}"
 EndProject

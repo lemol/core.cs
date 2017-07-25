@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Lemolsoft.Framework.Domain;
+using Core.Domain;
 using Simple.Domain.Data;
 using Microsoft.AspNetCore.Mvc;
 using Simple.Application.WebService.Dto;

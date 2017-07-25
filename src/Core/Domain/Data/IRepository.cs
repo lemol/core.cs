@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Lemolsoft.Framework.Domain.Data
+namespace Core.Domain.Data
 {
     public interface IRepository<TEntity, TIdentity>
         where TEntity : IEntity<TIdentity>

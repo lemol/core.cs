@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Lemolsoft.Framework.Domain;
-using Lemolsoft.Framework.Domain.Data;
-using Lemolsoft.Framework.Infrastructure;
+using Core.Domain;
+using Core.Domain.Data;
+using Core.Infrastructure;
 
-namespace Lemolsoft.Framework.Application.Services
+namespace Core.Application.Services
 {
     public class RetrieveService<TRepository, TEntity, TIdentity> : IRetrieveService<TIdentity>
         where TEntity : IEntity<TIdentity>

@@ -1,6 +1,6 @@
 using System;
 
-namespace Lemolsoft.Framework.Domain
+namespace Core.Domain
 {
     public abstract class EntityBase<TIdentity> : IEntity<TIdentity>
     {

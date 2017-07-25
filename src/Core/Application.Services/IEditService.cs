@@ -1,6 +1,6 @@
 using System;
 
-namespace Lemolsoft.Framework.Application.Services
+namespace Core.Application.Services
 {
     public interface IEditService<TIdentity, TEditDto>
     {
