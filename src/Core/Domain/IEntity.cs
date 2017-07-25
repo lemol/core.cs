@@ -2,8 +2,8 @@
 
 namespace Lemolsoft.Framework.Domain
 {
-    public interface IEntity
+    public interface IEntity<TIdentity>
     {
-        Guid Id { get; }
+        TIdentity Id { get; }
     }
 }

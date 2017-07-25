@@ -2,13 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Run Tests",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/Domain.Test/bin/Debug/netcoreapp1.1/Lemolsoft.Framework.Domain.Test.dll",
+            "program": "${workspaceRoot}/src/Domain.Test/bin/Debug/netstandard2.0/Lemolsoft.Framework.Domain.Test.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/Domain.Test",
+            "cwd": "${workspaceRoot}/src/Domain.Test",
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"

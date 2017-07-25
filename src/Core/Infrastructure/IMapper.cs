@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Lemolsoft.Framework.Application
+namespace Lemolsoft.Framework.Infrastructure
 {
     public interface IMapper
     {

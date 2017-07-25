@@ -7,7 +7,7 @@ namespace Domain.Test
         [Fact]
         public void Test1()
         {
-
+            Assert.False(true);
         }
     }
 }

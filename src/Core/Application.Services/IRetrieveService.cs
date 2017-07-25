@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Lemolsoft.Framework.Application.Services
 {
-    public interface IRetrieveService
+    public interface IRetrieveService<TIdentity>
     {
         IEnumerable<TDto> GetAll<TDto>();
-        TDto Find<TDto>(Guid id);
+        TDto Find<TDto>(TIdentity id);
     }
 }

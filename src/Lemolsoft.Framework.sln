@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Lemolsoft.Framework.Domain.csproj", "{10E38A59-A8BF-44C0-99E1-B7638D08371F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Core\Domain\Lemolsoft.Framework.Domain.csproj", "{10E38A59-A8BF-44C0-99E1-B7638D08371F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Test", "Domain.Test\Lemolsoft.Framework.Domain.Test.csproj", "{9A62329A-C3E4-4359-A4AE-0D2DD4418064}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Test", "Core\Domain.Test\Lemolsoft.Framework.Domain.Test.csproj", "{9A62329A-C3E4-4359-A4AE-0D2DD4418064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Data.EF", "Data.EF\Lemolsoft.Framework.Data.EF.csproj", "{2E0758DF-4183-4102-BEDC-1D3B8D552143}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Data.EntityFramework", "Impl\Data.EntityFramework\Lemolsoft.Framework.Data.EntityFramework.csproj", "{2E0758DF-4183-4102-BEDC-1D3B8D552143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application", "Application\Lemolsoft.Framework.Application.csproj", "{10E2C953-B3AD-4856-AA34-E8716463AB13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Infrastructure", "Core\Infrastructure\Lemolsoft.Framework.Infrastructure.csproj", "{10E2C953-B3AD-4856-AA34-E8716463AB13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application.Services", "Application.Services\Lemolsoft.Framework.Application.Services.csproj", "{5DBADE45-C0D0-4E50-AB94-C87655381821}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application.Services", "Core\Application.Services\Lemolsoft.Framework.Application.Services.csproj", "{5DBADE45-C0D0-4E50-AB94-C87655381821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application.WebApi", "Application.WebApi\Lemolsoft.Framework.Application.WebApi.csproj", "{8D8B7010-FD55-4C2F-8819-F369B8084C86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemolsoft.Framework.Application.WebApi", "Impl\Application.WebApi\Lemolsoft.Framework.Application.WebApi.csproj", "{8D8B7010-FD55-4C2F-8819-F369B8084C86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

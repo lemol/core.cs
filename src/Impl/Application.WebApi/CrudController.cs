@@ -5,8 +5,8 @@ using System;
 
 namespace Lemolsoft.Framework.Application.WebApi
 {
-    public class CrudController<TService, TReadDto, TEditDto> : Controller
-        where TService : ICrudService<TEditDto>
+    public class CrudController<TService, TIdentity, TReadDto, TEditDto> : Controller
+        where TService : ICrudService<TIdentity, TEditDto>
     {
         #region Fields
         protected readonly TService _service;
@@ -27,7 +27,7 @@ namespace Lemolsoft.Framework.Application.WebApi
         }
 
         [HttpGet("{id}")]
-        public virtual TReadDto Get(Guid id)
+        public virtual TReadDto Get(TIdentity id)
         {
             return _service.Find<TReadDto>(id);
         }
@@ -40,20 +40,20 @@ namespace Lemolsoft.Framework.Application.WebApi
         }
 
         [HttpPut("{id}")]
-        public virtual void Put(Guid id, [FromBody]TEditDto value)
+        public virtual void Put(TIdentity id, [FromBody]TEditDto value)
         {
             _service.Update(id, value);
         }
 
         [HttpDelete("{id}")]
-        public virtual void Delete(Guid id)
+        public virtual void Delete(TIdentity id)
         {
             _service.Delete(id);
         }
         #endregion
     }
-    public class CrudController<TService, TDto> : CrudController<TService, TDto, TDto>
-        where TService : ICrudService<TDto>
+    public class CrudController<TService, TIdentity, TDto> : CrudController<TService, TIdentity, TDto, TDto>
+        where TService : ICrudService<TIdentity, TDto>
     {
         #region Constructors
         protected CrudController(TService service)

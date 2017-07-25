@@ -4,12 +4,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using Lemolsoft.Framework.Domain;
 using Lemolsoft.Framework.Domain.Data;
+using Lemolsoft.Framework.Infrastructure;
 
 namespace Lemolsoft.Framework.Application.Services
 {
-    public class RetrieveService<TRepository, TEntity> : IRetrieveService
-        where TEntity : IEntity
-        where TRepository : IRepository<TEntity>
+    public class RetrieveService<TRepository, TEntity, TIdentity> : IRetrieveService<TIdentity>
+        where TEntity : IEntity<TIdentity>
+        where TRepository : IRepository<TEntity, TIdentity>
     {
         #region Fields
         protected readonly IMapper _mapper;
@@ -25,7 +26,7 @@ namespace Lemolsoft.Framework.Application.Services
         #endregion
 
         #region IRetrieveService
-        public virtual TDto Find<TDto>(Guid id)
+        public virtual TDto Find<TDto>(TIdentity id)
         {
             var item = _repository.Find(id);
             var itemDto = _mapper.Map<TEntity, TDto>(item);
@@ -53,10 +54,10 @@ namespace Lemolsoft.Framework.Application.Services
         #endregion
     }
 
-    public class RetrieveService<TEntity> : RetrieveService<IRepository<TEntity>, TEntity>
-        where TEntity : IEntity
+    public class RetrieveService<TEntity, TIdentity> : RetrieveService<IRepository<TEntity, TIdentity>, TEntity, TIdentity>
+        where TEntity : IEntity<TIdentity>
     {
-        public RetrieveService(IMapper mapper, IRepository<TEntity> repository)
+        public RetrieveService(IMapper mapper, IRepository<TEntity, TIdentity> repository)
             : base(mapper, repository)
         {
         }

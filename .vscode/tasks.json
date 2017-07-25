@@ -5,11 +5,12 @@
     "args": [],
     "tasks": [
         {
-            "taskName": "build",
+            "taskName": "test",
             "args": [
-                "${workspaceRoot}/Domain.Test/Lemolsoft.Framework.Domain.Test.csproj"
+                "${workspaceRoot}/src/Domain.Test/Lemolsoft.Framework.Domain.Test.csproj"
             ],
-            "isBuildCommand": true,
+            "isTestCommand": true,
+            "showOutput": "always",
             "problemMatcher": "$msCompile"
         }
     ]

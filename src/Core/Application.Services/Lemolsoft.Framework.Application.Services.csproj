@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Lemolsoft.Framework.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Lemolsoft.Framework.Infrastructure.csproj" />
     <ProjectReference Include="..\Domain\Lemolsoft.Framework.Domain.csproj" />
   </ItemGroup>
 
