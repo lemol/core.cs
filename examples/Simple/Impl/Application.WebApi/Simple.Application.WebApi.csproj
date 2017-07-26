@@ -17,4 +17,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0-preview2-final" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Application.Services\Simple.Application.Services.csproj" />
+    <ProjectReference Include="..\Data.EntityFramework\Simple.Data.EntityFramework.csproj" />
+  </ItemGroup>
+
 </Project>

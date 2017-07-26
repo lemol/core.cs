@@ -6,11 +6,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/Application.WebService/bin/Debug/netcoreapp1.6/Simple.Application.WebService.dll",
+            "program": "${workspaceRoot}/Impl/Application.WebApi/bin/Debug/netcoreapp2.0/Simple.Application.WebApi.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/Application.WebService",
+            "cwd": "${workspaceRoot}/Impl/Application.WebApi",
             "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
                 "enabled": true,
                 "args": "${auto-detect-url}",
@@ -29,7 +28,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
             "sourceFileMap": {
-                "/Views": "${workspaceRoot}/Views"
+                "/Views": "${workspaceRoot}/Impl/Application.WebApi/Views"
             }
         },
         {

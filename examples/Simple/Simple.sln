@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Data.EF", "Impl\Data
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1772D36-CECB-4BEC-B11B-05A30175601A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services", "Core\Application.Services\Application.Services.csproj", "{18C9039C-BBC7-4FB4-964C-BE560E94400E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services", "Core\Application.Services\Simple.Application.Services.csproj", "{18C9039C-BBC7-4FB4-964C-BE560E94400E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

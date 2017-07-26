@@ -11,6 +11,19 @@ namespace Simple.Application.Services
             : base(mapper, repository)
         {
         }
+
+        protected override Guid CreateAbstract(PersonDto dto)
+        {
+            var person = new Person(dto.Name);
+            _repository.Create(person);
+            return person.Id;
+        }
+
+        protected override void UpdateAbstract(Guid id, PersonDto dto)
+        {
+            var person = _repository.Find(id);
+            _repository.Update(person);
+        }
     }
     public class PersonDto
     {
