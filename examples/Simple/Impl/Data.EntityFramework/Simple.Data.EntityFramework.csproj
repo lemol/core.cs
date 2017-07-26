@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Simple.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Domain\Core.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Data.EF\Core.Data.EF.csproj" />
+    <ProjectReference Include="..\..\Core\Domain\Simple.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Core\Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Impl\Data.EntityFramework\Core.Data.EntityFramework.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -7,7 +7,7 @@
         {
             "taskName": "test",
             "args": [
-                "${workspaceRoot}/src/Core/Domain.Test/Core.Domain.Test.csproj"
+                "${workspaceRoot}/Core/Domain.Test/Core.Domain.Test.csproj"
             ],
             "isTestCommand": true,
             "showOutput": "always",

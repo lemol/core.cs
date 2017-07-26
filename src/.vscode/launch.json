@@ -6,9 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/src/Core/Domain.Test/bin/Debug/netstandard2.0/Core.Domain.Test.dll",
+            "program": "${workspaceRoot}/Core/Domain.Test/bin/Debug/netstandard2.0/Core.Domain.Test.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/src/Core/Domain.Test",
+            "cwd": "${workspaceRoot}/Core/Domain.Test",
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"

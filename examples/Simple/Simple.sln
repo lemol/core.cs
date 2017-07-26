@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.WebService", "Application.WebService\Simple.Application.WebService.csproj", "{93ACA94D-6071-4D34-9769-9C6ECE53AD6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.WebApi", "Impl\Application.WebApi\Simple.Application.WebApi.csproj", "{93ACA94D-6071-4D34-9769-9C6ECE53AD6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain", "..\..\src\Domain\Core.Domain.csproj", "{E10C41C7-84E7-4D46-9EE2-5129EA9E5393}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain", "..\..\src\Core\Domain\Core.Domain.csproj", "{E10C41C7-84E7-4D46-9EE2-5129EA9E5393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Domain", "Domain\Simple.Domain.csproj", "{7414027E-BB46-40F1-A032-4A04B2EE3953}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Domain", "Core\Domain\Simple.Domain.csproj", "{7414027E-BB46-40F1-A032-4A04B2EE3953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Data.EF", "Data.EF\Simple.Data.EF.csproj", "{D5FFD7FC-74CB-48BD-96A6-E6F57795A7B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Data.EF", "Impl\Data.EntityFramework\Simple.Data.EntityFramework.csproj", "{D5FFD7FC-74CB-48BD-96A6-E6F57795A7B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Data.Odbc", "Data.Odbc\Simple.Data.Odbc.csproj", "{794648AB-C959-4BB1-9A46-F93F1A128AA6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1772D36-CECB-4BEC-B11B-05A30175601A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Services", "Core\Application.Services\Application.Services.csproj", "{18C9039C-BBC7-4FB4-964C-BE560E94400E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,17 +76,20 @@ Global
 		{D5FFD7FC-74CB-48BD-96A6-E6F57795A7B3}.Release|x64.Build.0 = Release|x64
 		{D5FFD7FC-74CB-48BD-96A6-E6F57795A7B3}.Release|x86.ActiveCfg = Release|x86
 		{D5FFD7FC-74CB-48BD-96A6-E6F57795A7B3}.Release|x86.Build.0 = Release|x86
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Debug|x64.ActiveCfg = Debug|x64
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Debug|x64.Build.0 = Debug|x64
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Debug|x86.ActiveCfg = Debug|x86
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Debug|x86.Build.0 = Debug|x86
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Release|x64.ActiveCfg = Release|x64
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Release|x64.Build.0 = Release|x64
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Release|x86.ActiveCfg = Release|x86
-		{794648AB-C959-4BB1-9A46-F93F1A128AA6}.Release|x86.Build.0 = Release|x86
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Debug|x64.ActiveCfg = Debug|x64
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Debug|x64.Build.0 = Debug|x64
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Debug|x86.ActiveCfg = Debug|x86
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Debug|x86.Build.0 = Debug|x86
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Release|x64.ActiveCfg = Release|x64
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Release|x64.Build.0 = Release|x64
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Release|x86.ActiveCfg = Release|x86
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18C9039C-BBC7-4FB4-964C-BE560E94400E} = {E1772D36-CECB-4BEC-B11B-05A30175601A}
 	EndGlobalSection
 EndGlobal
