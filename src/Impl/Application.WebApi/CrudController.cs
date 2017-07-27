@@ -33,7 +33,6 @@ namespace Core.Application.WebApi
         }
 
         [HttpPost]
-        //[Authorize]
         public virtual void Post([FromBody]TEditDto value)
         {
             _service.Create(value);
@@ -52,11 +51,22 @@ namespace Core.Application.WebApi
         }
         #endregion
     }
+
     public class CrudController<TService, TIdentity, TDto> : CrudController<TService, TIdentity, TDto, TDto>
         where TService : ICrudService<TIdentity, TDto>
     {
         #region Constructors
         protected CrudController(TService service)
+            : base(service)
+        {
+        }
+        #endregion
+    }
+
+    public class CrudController<TIdentity, TDto> : CrudController<ICrudService<TIdentity, TDto>, TIdentity, TDto, TDto>
+    {
+        #region Constructors
+        protected CrudController(ICrudService<TIdentity, TDto> service)
             : base(service)
         {
         }

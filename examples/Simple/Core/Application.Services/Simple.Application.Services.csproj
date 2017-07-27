@@ -5,10 +5,11 @@
     <ProjectReference Include="..\..\..\..\src\Core\Domain\Core.Domain.csproj" />
     <ProjectReference Include="..\..\..\..\src\Core\Application.Services\Core.Application.Services.csproj" />
     <ProjectReference Include="..\..\..\..\src\Core\Infrastructure\Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\Application\Simple.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
 </Project>

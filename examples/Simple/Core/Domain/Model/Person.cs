@@ -1,5 +1,3 @@
-using Simple.Domain;
-
 namespace Simple.Domain.Model
 {
     public class Person : EntityBase

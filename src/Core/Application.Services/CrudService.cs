@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Core.Infrastructure;
-using Core.Domain;
+using Core.Domain.Model;
 using Core.Domain.Data;
 
 namespace Core.Application.Services
@@ -11,8 +11,8 @@ namespace Core.Application.Services
     public abstract class CrudService<TEntity, TIdentity, TEditDto> : CrudService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TEditDto>
         where TEntity : IEntity<TIdentity>
     {
-        protected CrudService(IMapper mapper, IRepository<TEntity, TIdentity> repository)
-            : base(mapper, repository)
+        protected CrudService(IMapper mapper, IUnitOfWork unitOfWork, IRepository<TEntity, TIdentity> repository)
+            : base(mapper, unitOfWork, repository)
         {
         }
     }
@@ -24,14 +24,16 @@ namespace Core.Application.Services
         #region Fields
         protected readonly IMapper _mapper;
         protected readonly TRepository _repository;
+        protected readonly IUnitOfWork _unitOfWork;
         #endregion
 
         #region Constructors
-        protected CrudService(IMapper mapper, TRepository repository)
+        protected CrudService(IMapper mapper, IUnitOfWork unitOfWork, TRepository repository)
             : base(new RetrieveService<TRepository, TEntity, TIdentity>(mapper, repository), null)
         {
             _mapper = mapper;
             _repository = repository;
+            _unitOfWork = unitOfWork;
             
             var retrieveService = (RetrieveService<TRepository, TEntity, TIdentity>)_retrieveService;
             
@@ -60,11 +62,15 @@ namespace Core.Application.Services
         #region Abstracts
         protected abstract TIdentity CreateAbstract(TEditDto dto);
         protected abstract void UpdateAbstract(TIdentity id, TEditDto dto);
-        protected abstract void DeleteAbstract(TIdentity id);
+        protected virtual void DeleteAbstract(TIdentity id)
+        {
+            var entity = _repository.Find(id);
+            _repository.Delete(entity);
+        }
         #endregion
     }
 
-    public abstract class CrudService<TRetrieveService, TEditService, TRepository, TEntity, TIdentity, TEditDto> : IRetrieveService<TIdentity>, IEditService<TIdentity, TEditDto>
+    public abstract class CrudService<TRetrieveService, TEditService, TRepository, TEntity, TIdentity, TEditDto> : ICrudService<TIdentity, TEditDto>
         where TRetrieveService : IRetrieveService<TIdentity>
         where TEditService : IEditService<TIdentity, TEditDto>
         where TRepository : IRepository<TEntity, TIdentity>

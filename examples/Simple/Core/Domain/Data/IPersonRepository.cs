@@ -1,4 +1,4 @@
-using Core.Domain;
+using Core.Domain.Model;
 using Simple.Domain.Model;
 
 namespace Simple.Domain.Data

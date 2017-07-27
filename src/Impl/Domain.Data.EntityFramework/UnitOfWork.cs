@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Core.Domain.Data;
 
-namespace Core.Data.EntityFramework
+namespace Core.Domain.Data.EntityFramework
 {
     public class UnitOfWork<TDbContext> : IUnitOfWork
         where TDbContext : DbContext

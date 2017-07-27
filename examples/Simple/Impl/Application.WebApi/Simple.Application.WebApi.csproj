@@ -19,7 +19,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Application.Services\Simple.Application.Services.csproj" />
-    <ProjectReference Include="..\Data.EntityFramework\Simple.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Domain.Data\Simple.Domain.Data.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Impl\Application.WebApi\Core.Application.WebApi.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Core\Infrastructure\Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Core\Domain\Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

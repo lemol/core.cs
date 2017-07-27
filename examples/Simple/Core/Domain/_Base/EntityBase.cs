@@ -1,7 +1,7 @@
 using System;
-using Core.Domain;
+using Core.Domain.Model;
 
-namespace Simple.Domain
+namespace Simple.Domain.Model
 {
     public class EntityBase : EntityBase<Guid>, IEntity
     {

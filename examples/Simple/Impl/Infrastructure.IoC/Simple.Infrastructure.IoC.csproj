@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Application\Simple.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Application.Services\Simple.Application.Services.csproj" />
+    <ProjectReference Include="..\..\Core\Domain\Simple.Domain.csproj" />
+    <ProjectReference Include="..\Application.Mappings\Simple.Application.Mappings.csproj" />
+    <ProjectReference Include="..\Domain.Data\Simple.Domain.Data.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Core\Infrastructure\Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Impl\Infrastructure.IoC.SimpleInjector\Core.Infrastructure.IoC.SimpleInjector.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>

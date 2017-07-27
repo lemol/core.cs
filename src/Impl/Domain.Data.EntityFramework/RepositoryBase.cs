@@ -2,12 +2,12 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Core.Domain.Data;
-using Core.Domain;
+using Core.Domain.Model;
 using System.Linq.Expressions;
 
-namespace Core.Data.EntityFramework
+namespace Core.Domain.Data.EntityFramework
 {
-    public class RepositoryBase<TDbContext, TEntity, TIdentity> : IRepository<TEntity, TIdentity>
+    public abstract class RepositoryBase<TDbContext, TEntity, TIdentity> : IRepository<TEntity, TIdentity>
         where TEntity : class, IEntity<TIdentity>
         where TDbContext : DbContext
     {

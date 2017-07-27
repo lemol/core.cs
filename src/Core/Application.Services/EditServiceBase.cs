@@ -1,5 +1,5 @@
 using System;
-using Core.Domain;
+using Core.Domain.Model;
 using Core.Domain.Data;
 
 namespace Core.Application.Services

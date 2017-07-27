@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Core.Domain.Model;
 
 namespace Core.Domain.Data
 {

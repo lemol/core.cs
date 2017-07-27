@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Domain
+namespace Core.Domain.Model
 {
     public abstract class EntityBase<TIdentity> : IEntity<TIdentity>
     {

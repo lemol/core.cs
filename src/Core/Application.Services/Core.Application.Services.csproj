@@ -3,10 +3,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Core.Infrastructure.csproj" />
     <ProjectReference Include="..\Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\Application\Core.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
 </Project>

@@ -1,14 +1,15 @@
 using System;
 using Core.Infrastructure;
-using Simple.Domain;
+using Simple.Application.Dto;
+using Simple.Domain.Data;
 using Simple.Domain.Model;
 
 namespace Simple.Application.Services
 {
     public class PersonService : CrudService<Person, PersonDto>
     {
-        public PersonService(IMapper mapper, IRepository<Person> repository)
-            : base(mapper, repository)
+        public PersonService(IApplicationMapper mapper, IUnitOfWork unitOfWork, IRepository<Person> repository)
+            : base(mapper, unitOfWork, repository)
         {
         }
 
@@ -24,10 +25,5 @@ namespace Simple.Application.Services
             var person = _repository.Find(id);
             _repository.Update(person);
         }
-    }
-    public class PersonDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
     }
 }
