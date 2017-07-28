@@ -4,7 +4,7 @@ using Simple.Domain.Model;
 
 namespace Simple.Domain.Data
 {
-    public abstract class SimpleReposiotry<TDbContext, TEntity> : Core.Domain.Data.EntityFramework.SimpleReposiotry<TDbContext, TEntity, Guid>
+    public abstract class SimpleReposiotry<TDbContext, TEntity> : Core.Domain.Data.EntityFramework.SimpleReposiotry<TDbContext, TEntity, Guid>, IRepository<TEntity>
         where TDbContext : DbContext
         where TEntity : class, IEntity
     {
@@ -15,7 +15,7 @@ namespace Simple.Domain.Data
         }
     }
 
-    public class SimpleReposiotry<TEntity> : Core.Domain.Data.EntityFramework.SimpleReposiotry<SimpleDbContext, TEntity, Guid>
+    public class SimpleReposiotry<TEntity> : SimpleReposiotry<SimpleDbContext, TEntity>
         where TEntity : class, IEntity
     {
         public SimpleReposiotry(SimpleDbContext context)

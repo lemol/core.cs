@@ -9,6 +9,11 @@ namespace Simple.Application.Mappings
         public PersonMappings()
         {
             CreateMap<Person, PersonDto>();
+            CreateMap<PersonDto, Person>()
+                .ForMember(
+                    y => y.CountryId,
+                    o => o.ResolveUsing(x => x.Country.Id)
+                );
         }
     }
 }

@@ -2,10 +2,9 @@ using System;
 
 namespace Simple.Application.Dto
 {
-    public class PersonDto
+    public class CountryDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public CountryDto Country { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using Simple.Domain.Model;
 
 namespace Application.WebApi.Controllers
 {
-    public class SimpleCrudController<TEntity, TDto> : Core.Application.WebApi.SimpleCrudController<TEntity, Guid, TDto>
+    public class SimpleCrudController<TEntity, TDto> : Core.Application.WebApi.Controllers.SimpleCrudController<TEntity, Guid, TDto>
         where TEntity : IEntity
     {
         public SimpleCrudController(IApplicationMapper mapper, IUnitOfWork unitOfWork, IRepository<TEntity> repository)

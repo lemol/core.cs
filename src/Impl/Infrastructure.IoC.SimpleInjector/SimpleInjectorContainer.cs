@@ -1,17 +1,19 @@
+using System;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.Infrastructure.IoC.SimpleInjector
 {
-    public abstract class DefaultContainer : IContainer
+    public abstract class SimpleInjectorContainer : IContainer
     {
         private readonly Container _container;
-        public Container ContainerWrapped
+        public Container InnerContainer
         {
             get { return _container; }
         }
         
-        public DefaultContainer()
+        public SimpleInjectorContainer()
         {
             _container = new Container();
             _container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
@@ -19,10 +21,11 @@ namespace Core.Infrastructure.IoC.SimpleInjector
 
         #region IContainer
         public void AddSingleton<T>(T instance) where T : class => _container.RegisterSingleton(instance);
-        public void AddTransient<T>(T instance) where T : class => _container.Register<T>(() => instance, Lifestyle.Transient);
-        public void AddScoped<T>(T instance) where T : class => _container.Register<T>(() => instance, Lifestyle.Scoped);       
+        public void AddTransient<T>(Func<T> f) where T : class => _container.Register<T>(f, Lifestyle.Transient);
+        public void AddScoped<T>(Func<T> f) where T : class => _container.Register<T>(f, Lifestyle.Scoped);       
         public void Register<IT, T>() where T : class, IT where IT : class => _container.Register<IT, T>();
-        public abstract void Setup();
+        public void Register(Type abstractType, Type concreteType) => _container.Register(abstractType, concreteType);
+        public abstract void Setup(IServiceCollection services);
         #endregion
     }
 }

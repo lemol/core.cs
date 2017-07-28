@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core.Application.Services;
 using System;
 
-namespace Core.Application.WebApi
+namespace Core.Application.WebApi.Controllers
 {
     public class CrudController<TService, TIdentity, TReadDto, TEditDto> : Controller
         where TService : ICrudService<TIdentity, TEditDto>

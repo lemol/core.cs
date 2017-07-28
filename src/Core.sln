@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Infrastructure.Mapping
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Infrastructure.IoC.SimpleInjector", "Impl\Infrastructure.IoC.SimpleInjector\Core.Infrastructure.IoC.SimpleInjector.csproj", "{47388FF4-EFB0-4311-B09A-6527A1723328}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Application.WebApi.SimpleInjector", "Impl\Application.WebApi.SimpleInjector\Core.Application.WebApi.SimpleInjector.csproj", "{798AE82F-64BA-4869-846D-21E1930F375D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,10 +148,23 @@ Global
 		{47388FF4-EFB0-4311-B09A-6527A1723328}.Release|x64.Build.0 = Release|x64
 		{47388FF4-EFB0-4311-B09A-6527A1723328}.Release|x86.ActiveCfg = Release|x86
 		{47388FF4-EFB0-4311-B09A-6527A1723328}.Release|x86.Build.0 = Release|x86
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Debug|x64.ActiveCfg = Debug|x64
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Debug|x64.Build.0 = Debug|x64
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Debug|x86.ActiveCfg = Debug|x86
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Debug|x86.Build.0 = Debug|x86
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Release|x64.ActiveCfg = Release|x64
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Release|x64.Build.0 = Release|x64
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Release|x86.ActiveCfg = Release|x86
+		{798AE82F-64BA-4869-846D-21E1930F375D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9097E335-F4EF-43BE-98B6-879E5A6134D4} = {F7782ADC-B112-4CE4-B177-77E755636A5D}
 		{1687EAD1-B877-4CD9-8BD2-30FD7D2E45C3} = {F1710B33-55E8-4B68-8AC7-4D92EBA1DB3F}
 		{47388FF4-EFB0-4311-B09A-6527A1723328} = {F1710B33-55E8-4B68-8AC7-4D92EBA1DB3F}
+		{798AE82F-64BA-4869-846D-21E1930F375D} = {F1710B33-55E8-4B68-8AC7-4D92EBA1DB3F}
 	EndGlobalSection
 EndGlobal

@@ -35,7 +35,10 @@ namespace Core.Application.Services
 
         public virtual IEnumerable<TDto> GetAll<TDto>()
         {
-            var items = _repository.Query(GetAllIncludes.ToArray());
+            var items = _repository
+                .Query(GetAllIncludes.ToArray())
+                .ToList();
+
             var itemsDto = _mapper.Map<TEntity, TDto>(items);
             return itemsDto;
         }

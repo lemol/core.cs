@@ -47,13 +47,7 @@ namespace Core.Domain.Data.EntityFramework
 
         public void Update(TEntity entity)
         {
-            var dbEntityEntry = _db.Entry(entity);
-            if (dbEntityEntry.State == EntityState.Detached)
-            {
-                _dbSet.Attach(entity);
-            }
-
-            dbEntityEntry.State = EntityState.Modified;
+            _dbSet.Update(entity);
         }
 
         public void Delete(TEntity entity)
