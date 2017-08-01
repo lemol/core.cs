@@ -10,6 +10,7 @@ namespace Core.Infrastructure
         void AddScoped<T>(Func<T> f) where T : class;
         void Register<IT, T>() where T : class, IT where IT : class;
         void Register(Type abstractType, Type concreteType);
+        T Resolve<T>() where T : class;
         void Setup(IServiceCollection services);
     }
 }

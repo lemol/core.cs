@@ -9,7 +9,7 @@
     <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.0.10" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Infrastructure\Core.Infrastructure.csproj" />
+    <!-- <ProjectReference Include="..\..\Core\Infrastructure\Core.Infrastructure.csproj" /> -->
     <ProjectReference Include="..\Infrastructure.IoC.SimpleInjector\Core.Infrastructure.IoC.SimpleInjector.csproj" />
     <ProjectReference Include="..\Application.WebApi\Core.Application.WebApi.csproj" />
   </ItemGroup>
