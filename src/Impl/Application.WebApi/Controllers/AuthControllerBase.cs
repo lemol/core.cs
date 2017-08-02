@@ -91,10 +91,10 @@ namespace Sedic.Application.WebApi.Controllers
             return new OkObjectResult(json);
         }
 
-        [HttpGet]
-        [Authorize]
-        [Route("user")]
-        public abstract Task<TUserDto> GetUser();
+        // [HttpGet]
+        // [Authorize]
+        // [Route("user")]
+        // public abstract Task<TUserDto> GetUser();
         // {
         //     var user = await _userManager.GetUserAsync(User);
         //     var userDto = new UserDto

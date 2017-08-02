@@ -75,7 +75,7 @@ namespace Core.Application.WebApi.SimpleInjector
             #region Privates
             protected void IntegrateSimpleInjector(IServiceCollection services)
             {
-                _container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+                // _container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
                 services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
