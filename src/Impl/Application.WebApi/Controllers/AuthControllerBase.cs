@@ -7,19 +7,22 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Options;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Sedic.Application.WebApi.Controllers
+namespace Core.Application.WebApi.Controllers
 {
     public abstract class AuthControllerBase<TUser, TUserDto> : Controller
         where TUser : class
     {
-        protected readonly AuthTokenOptions _authTokenOptions;
+        protected readonly IOptions<JwtConfiguration> _jwtOptions;
         protected readonly UserManager<TUser> _userManager;
         protected readonly SignInManager<TUser> _signInManager;
 
-        public AuthControllerBase(AuthTokenOptions authTokenOptions, UserManager<TUser> userManager, SignInManager<TUser> signInManager)
+        public AuthControllerBase(IOptions<JwtConfiguration> jwtOptions, UserManager<TUser> userManager, SignInManager<TUser> signInManager)
         {
-            _authTokenOptions = authTokenOptions;
+            _jwtOptions = jwtOptions;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -27,83 +30,66 @@ namespace Sedic.Application.WebApi.Controllers
         protected abstract TUser GetUserByUsername(string username);
         protected abstract string GetUserId(TUser user);
 
-        private async Task<bool> CheckAuth(string username, string password)
-        {
-            var user = GetUserByUsername(username); // _userManager.Users.FirstOrDefault(x => x.Username == username);
-            var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
-            return result.Succeeded;
-        }
-
-        // [HttpPost]
-        // [Route("setup")]
-        // [AllowAnonymous]
-        // public async Task<bool> AddUsers()
-        // {
-        //     var user = new User
-        //     {
-        //         UserName = "lemol",
-        //         FullName = "Leza",
-        //         Email = "lemol@lemol.io"
-        //     };
-
-        //    var result = await _userManager.CreateAsync(user, "Lemol!123");
-        //    return result.Succeeded;
-        // }
-
         [HttpPost]
         [Route("token")]
         [AllowAnonymous]
         public async Task<IActionResult> GetToken([FromBody]AuthDto auth)
         {
-            if (!await CheckAuth(auth.Username, auth.Password))
+            var isValidated = await CheckAuth(auth.Username, auth.Password);
+
+            if (!isValidated)
             {
                 return BadRequest("Invalid credentials");
             }
 
-            var user = GetUserByUsername(auth.Username); //_userManager.Users.FirstOrDefault(x => x.UserName == auth.UserName);
+            var user = GetUserByUsername(auth.Username);
+            var json = GetJwt(GetUserId(user));
 
-            var claims = new[]
+            return new OkObjectResult(json);
+        }
+
+        #region Helpers
+        private string GetJwt(string username)
+        {
+            var now = DateTime.UtcNow;
+
+            var claims = new Claim[]
             {
-                new Claim("Sub", GetUserId(user))
+                new Claim(JwtRegisteredClaimNames.Sub, username),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Iat, now.ToUniversalTime().ToString(), ClaimValueTypes.Integer64)
             };
 
-            var now = DateTime.Now;
-            var expires = now.AddSeconds(36000);
+            var symmetricKeyAsBase64 = _jwtOptions.Value.Secret;
+            var keyByteArray = Encoding.ASCII.GetBytes(symmetricKeyAsBase64);
+            var signingKey = new SymmetricSecurityKey(keyByteArray);
+
             var jwt = new JwtSecurityToken(
-                audience: _authTokenOptions.Audience,
+                issuer: _jwtOptions.Value.Issuer,
+                audience: _jwtOptions.Value.Audience,
                 claims: claims,
                 notBefore: now,
-                expires: expires,
-                issuer: _authTokenOptions.Issuer
+                expires: now.Add(TimeSpan.FromMinutes(_jwtOptions.Value.Expires)),
+                signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
             );
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
             var response = new
             {
-                token = encodedJwt,
-                expires_in = (int)360000
+                access_token = encodedJwt,
+                expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds,
             };
 
-            var json = JsonConvert.SerializeObject(response);
-
-            return new OkObjectResult(json);
+            return JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented });
         }
 
-        // [HttpGet]
-        // [Authorize]
-        // [Route("user")]
-        // public abstract Task<TUserDto> GetUser();
-        // {
-        //     var user = await _userManager.GetUserAsync(User);
-        //     var userDto = new UserDto
-        //     {
-        //         Id = user.Id,
-        //         Username = user.UserName,
-        //         FullName = user.FullName
-        //     };
-
-        //     return userDto;
-        // }
+        private async Task<bool> CheckAuth(string username, string password)
+        {
+            var user = GetUserByUsername(username); // _userManager.Users.FirstOrDefault(x => x.Username == username);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
+            return result.Succeeded;
+        }
+        #endregion
     }
 }

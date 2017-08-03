@@ -1,4 +1,4 @@
-namespace Sedic.Application.WebApi
+namespace Core.Application.WebApi
 {
     public class AuthDto
     {

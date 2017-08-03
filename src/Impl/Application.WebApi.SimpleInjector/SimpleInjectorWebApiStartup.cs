@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Core.Infrastructure.IoC.SimpleInjector;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using SimpleInjector.Lifestyles;
@@ -60,10 +63,23 @@ namespace Core.Application.WebApi.SimpleInjector
             // This method gets called by the runtime. Use this method to add services to the container.
             public override void ConfigureServices(IServiceCollection services)
             {
-                services.AddMvc();
+                services.AddOptions();
+                services.Configure<JwtConfiguration>(Configuration.GetSection("Jwt"));
+
                 IntegrateSimpleInjector(services);
                 
+                ConfigureJwtAuthService(services);
+
+
+                WrappedContainer.AddTransient(() =>
+                    services
+                        .BuildServiceProvider()
+                        .GetService<IOptions<JwtConfiguration>>()
+                );
+
                 base.ConfigureServices(services);
+                
+                services.AddMvc();
             }
 
             // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,6 +100,44 @@ namespace Core.Application.WebApi.SimpleInjector
 
                 services.EnableSimpleInjectorCrossWiring(_container);
                 services.UseSimpleInjectorAspNetRequestScoping(_container);
+            }
+
+            public void ConfigureJwtAuthService(IServiceCollection services)  
+            {  
+                var jwtConfiguration = Configuration.GetSection("Jwt");
+                var symmetricKeyAsBase64 = jwtConfiguration["Secret"];
+                var keyByteArray = Encoding.ASCII.GetBytes(symmetricKeyAsBase64);  
+                var signingKey = new SymmetricSecurityKey(keyByteArray);  
+            
+                var tokenValidationParameters = new TokenValidationParameters  
+                {  
+                    // The signing key must match!  
+                    ValidateIssuerSigningKey = true,  
+                    IssuerSigningKey = signingKey,  
+            
+                    // Validate the JWT Issuer (iss) claim  
+                    ValidateIssuer = true,  
+                    ValidIssuer = jwtConfiguration["Issuer"],
+            
+                    // Validate the JWT Audience (aud) claim  
+                    ValidateAudience = true,  
+                    ValidAudience = jwtConfiguration["Audience"],  
+            
+                    // Validate the token expiry  
+                    ValidateLifetime = true,  
+            
+                    ClockSkew = TimeSpan.Zero  
+                };  
+                
+                services.AddAuthentication(options =>  
+                {  
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;  
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  
+                })  
+                .AddJwtBearerAuthentication(o =>  
+                {  
+                    o.TokenValidationParameters = tokenValidationParameters;  
+                });  
             }
             #endregion
         }
