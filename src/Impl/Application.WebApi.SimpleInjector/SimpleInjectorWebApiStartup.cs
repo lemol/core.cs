@@ -34,7 +34,7 @@ namespace Core.Application.WebApi.SimpleInjector
         }
 
         public virtual void ConfigureServices(IServiceCollection services) => _inner.ConfigureServices(services);
-        public virtual void Configure(IApplicationBuilder app, IHostingEnvironment env) => _inner.Configure(app, env);
+        public virtual void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory) => _inner.Configure(app, env, loggerFactory);
 
         class InnerSimpleInjectorWebApiStartup : SimpleInjectorStartup<TSimpleInjectorContainer>, IWebApiStartup
         {
@@ -67,7 +67,7 @@ namespace Core.Application.WebApi.SimpleInjector
             }
 
             // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-            public virtual void Configure(IApplicationBuilder app, IHostingEnvironment env)
+            public virtual void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
             {
                 app.UseMvc();
             }

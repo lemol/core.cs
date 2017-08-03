@@ -74,7 +74,6 @@ namespace Sedic.Application.WebApi.Controllers
                 claims: claims,
                 notBefore: now,
                 expires: expires,
-                signingCredentials: _authTokenOptions.SigningCredentials,
                 issuer: _authTokenOptions.Issuer
             );
 
