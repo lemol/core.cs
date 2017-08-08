@@ -21,27 +21,59 @@ namespace Core.Application.WebApi.Controllers
 
         #region API
         [HttpGet]
-        public virtual IEnumerable<TReadDto> Get()
+        public virtual ApiResult Get()
         {
-            return _service.GetAll<TReadDto>();
+            try
+            {
+                var result = _service.GetAll<TReadDto>();
+                return new SuccessResult<IEnumerable<TReadDto>>(result);
+            }
+            catch(Exception e)
+            {
+                return new ErrorResult(e.Message, "Erro na pesquisa");
+            }
         }
 
         [HttpGet("{id}")]
-        public virtual TReadDto Get(TIdentity id)
+        public virtual ApiResult Get(TIdentity id)
         {
-            return _service.Find<TReadDto>(id);
+            try
+            {
+                var result = _service.Find<TReadDto>(id);
+                return new SuccessResult<TReadDto>(result);
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(e.Message, "Erro na pesquisa");
+            }
         }
 
         [HttpPost]
-        public virtual void Post([FromBody]TEditDto value)
+        public virtual ApiResult Post([FromBody]TEditDto value)
         {
-            _service.Create(value);
+            try
+            {
+                var id = _service.Create(value);
+                return new SuccessResult<object>(new { Id = id }, "Criado com sucesso");
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(e.Message, "Erro na pesquisa");
+            }
         }
 
         [HttpPut("{id}")]
-        public virtual void Put(TIdentity id, [FromBody]TEditDto value)
+        public virtual ApiResult Put(TIdentity id, [FromBody]TEditDto value)
         {
-            _service.Update(id, value);
+            try
+            {
+                _service.Update(id, value);
+                return new SuccessResult<object>(new { Id = id }, "Actualizado com sucesso");
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(e.Message, "Erro na pesquisa");
+            }
         }
 
         [HttpDelete("{id}")]

@@ -1,9 +1,31 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using AM = AutoMapper;
 
 namespace Core.Infrastructure.Mappings.AutoMapper
 {
+    public static class MappingsExtensions
+    {
+        public static AM.IMappingExpression<TSource, TDestination> Flatilize<TSource, TDestination>(this AM.IMappingExpression<TSource, TDestination> mapping)
+        {
+            return mapping.AfterMap((source, destination) => 
+            {
+                if(destination == null)
+                    return;
+
+                typeof(TDestination)
+                    .GetProperties()
+                    .Where(x => x.PropertyType.GetProperty("Id") != null)
+                    .ToList()
+                    .ForEach(x =>
+                    {
+                        x
+                            .SetValue(destination, null, null);
+                    });
+            });
+        }
+    }
     public class DefaultMapper : IMapper
     {
         #region Campos

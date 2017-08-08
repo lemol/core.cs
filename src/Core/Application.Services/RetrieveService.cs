@@ -28,7 +28,10 @@ namespace Core.Application.Services
         #region IRetrieveService
         public virtual TDto Find<TDto>(TIdentity id)
         {
-            var item = _repository.Find(id);
+            var item = _repository
+                .Query(GetAllIncludes.ToArray())
+                .FirstOrDefault(x => id.Equals(x.Id));
+
             var itemDto = _mapper.Map<TEntity, TDto>(item);
             return itemDto;
         }
