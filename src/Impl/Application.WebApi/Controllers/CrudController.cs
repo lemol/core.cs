@@ -5,8 +5,9 @@ using System;
 
 namespace Core.Application.WebApi.Controllers
 {
-    public class CrudController<TService, TIdentity, TReadDto, TEditDto> : Controller
+    public class CrudController<TService, TIdentity, TReadDto, TEditDto, TQuery> : Controller
         where TService : ICrudService<TIdentity, TEditDto>
+        where TQuery : class
     {
         #region Fields
         protected readonly TService _service;
@@ -21,7 +22,7 @@ namespace Core.Application.WebApi.Controllers
 
         #region API
         [HttpGet]
-        public virtual ApiResult Get()
+        public virtual ApiResult Get([FromQuery] TQuery query = null)
         {
             try
             {
@@ -84,8 +85,9 @@ namespace Core.Application.WebApi.Controllers
         #endregion
     }
 
-    public class CrudController<TService, TIdentity, TDto> : CrudController<TService, TIdentity, TDto, TDto>
+    public class CrudController<TService, TIdentity, TDto, TQuery> : CrudController<TService, TIdentity, TDto, TDto, TQuery>
         where TService : ICrudService<TIdentity, TDto>
+        where TQuery : class
     {
         #region Constructors
         protected CrudController(TService service)
@@ -95,7 +97,8 @@ namespace Core.Application.WebApi.Controllers
         #endregion
     }
 
-    public class CrudController<TIdentity, TDto> : CrudController<ICrudService<TIdentity, TDto>, TIdentity, TDto, TDto>
+    public class CrudController<TIdentity, TDto, TQuery> : CrudController<ICrudService<TIdentity, TDto>, TIdentity, TDto, TDto, TQuery>
+        where TQuery : class
     {
         #region Constructors
         protected CrudController(ICrudService<TIdentity, TDto> service)

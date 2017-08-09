@@ -8,7 +8,7 @@ using Core.Infrastructure;
 
 namespace Core.Application.Services
 {
-    public class RetrieveService<TRepository, TEntity, TIdentity> : IRetrieveService<TIdentity>
+    public class RetrieveService<TRepository, TEntity, TIdentity, TQuery> : IRetrieveService<TIdentity, TQuery>
         where TEntity : IEntity<TIdentity>
         where TRepository : IRepository<TEntity, TIdentity>
     {
@@ -45,6 +45,11 @@ namespace Core.Application.Services
             var itemsDto = _mapper.Map<TEntity, TDto>(items);
             return itemsDto;
         }
+
+        public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query)
+        {
+            return GetAll<TDto>();
+        }
         #endregion
 
         #region Virtuais
@@ -60,7 +65,7 @@ namespace Core.Application.Services
         #endregion
     }
 
-    public class RetrieveService<TEntity, TIdentity> : RetrieveService<IRepository<TEntity, TIdentity>, TEntity, TIdentity>
+    public class RetrieveService<TEntity, TIdentity, TQuery> : RetrieveService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TQuery>
         where TEntity : IEntity<TIdentity>
     {
         public RetrieveService(IMapper mapper, IRepository<TEntity, TIdentity> repository)

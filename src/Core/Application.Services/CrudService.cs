@@ -8,7 +8,7 @@ using Core.Domain.Data;
 
 namespace Core.Application.Services
 {
-    public abstract class CrudService<TEntity, TIdentity, TEditDto> : CrudService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TEditDto>
+    public abstract class CrudService<TEntity, TIdentity, TEditDto, TQuery> : CrudService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TEditDto, TQuery>
         where TEntity : IEntity<TIdentity>
     {
         protected CrudService(IMapper mapper, IUnitOfWork unitOfWork, IRepository<TEntity, TIdentity> repository)
@@ -17,7 +17,7 @@ namespace Core.Application.Services
         }
     }
 
-    public abstract class CrudService<TRepository, TEntity, TIdentity, TEditDto> : CrudService<IRetrieveService<TIdentity>, IEditService<TIdentity, TEditDto>, TRepository, TEntity, TIdentity, TEditDto>, IEditService<TIdentity, TEditDto>
+    public abstract class CrudService<TRepository, TEntity, TIdentity, TEditDto, TQuery> : CrudService<IRetrieveService<TIdentity, TQuery>, IEditService<TIdentity, TEditDto>, TRepository, TEntity, TIdentity, TEditDto, TQuery>, IEditService<TIdentity, TEditDto>
         where TRepository : IRepository<TEntity, TIdentity>
         where TEntity : IEntity<TIdentity>
     {
@@ -29,13 +29,13 @@ namespace Core.Application.Services
 
         #region Constructors
         protected CrudService(IMapper mapper, IUnitOfWork unitOfWork, TRepository repository)
-            : base(new RetrieveService<TRepository, TEntity, TIdentity>(mapper, repository), null)
+            : base(new RetrieveService<TRepository, TEntity, TIdentity, TQuery>(mapper, repository), null)
         {
             _mapper = mapper;
             _repository = repository;
             _unitOfWork = unitOfWork;
             
-            var retrieveService = (RetrieveService<TRepository, TEntity, TIdentity>)_retrieveService;
+            var retrieveService = (RetrieveService<TRepository, TEntity, TIdentity, TQuery>)_retrieveService;
             
             retrieveService.FindIncludes = FindIncludes;
             retrieveService.GetAllIncludes = GetAllIncludes;
@@ -70,8 +70,8 @@ namespace Core.Application.Services
         #endregion
     }
 
-    public abstract class CrudService<TRetrieveService, TEditService, TRepository, TEntity, TIdentity, TEditDto> : ICrudService<TIdentity, TEditDto>
-        where TRetrieveService : IRetrieveService<TIdentity>
+    public abstract class CrudService<TRetrieveService, TEditService, TRepository, TEntity, TIdentity, TEditDto, TQuery> : ICrudService<TIdentity, TEditDto, TQuery>
+        where TRetrieveService : IRetrieveService<TIdentity, TQuery>
         where TEditService : IEditService<TIdentity, TEditDto>
         where TRepository : IRepository<TEntity, TIdentity>
         where TEntity : IEntity<TIdentity>
@@ -92,6 +92,7 @@ namespace Core.Application.Services
         #region IRetrieveService
         public virtual TDto Find<TDto>(TIdentity id) => _retrieveService.Find<TDto>(id);
         public virtual IEnumerable<TDto> GetAll<TDto>() => _retrieveService.GetAll<TDto>();
+        public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query) => _retrieveService.GetQuery<TDto>(query);
         #endregion
 
         #region IEditService

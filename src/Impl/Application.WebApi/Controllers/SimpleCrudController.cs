@@ -8,8 +8,9 @@ using System;
 
 namespace Core.Application.WebApi.Controllers
 {
-    public class SimpleCrudController<TEntity, TIdentity, TDto> : CrudController<TIdentity, TDto>
+    public class SimpleCrudController<TEntity, TIdentity, TDto, TQuery> : CrudController<TIdentity, TDto, TQuery>
         where TEntity : IEntity<TIdentity>
+        where TQuery : class
     {
         public SimpleCrudController(
             IMapper mapper
