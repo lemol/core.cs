@@ -17,7 +17,7 @@ namespace Core.Application.WebApi.Controllers
             , IUnitOfWork unitOfWork
             , IRepository<TEntity, TIdentity> repository
             , IEnumerable<Expression<Func<TEntity, object>>> includes = null)
-            : base(new SimpleCrudService<TEntity, TIdentity, TDto>(mapper, unitOfWork, repository, includes))
+            : base(new SimpleCrudService<TEntity, TIdentity, TDto, TQuery>(mapper, unitOfWork, repository, includes))
         {
         }
     }

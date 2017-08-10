@@ -46,10 +46,8 @@ namespace Core.Application.Services
             return itemsDto;
         }
 
-        public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query)
-        {
-            return GetAll<TDto>();
-        }
+        public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query) =>
+            throw new NotImplementedException();
         #endregion
 
         #region Virtuais
@@ -71,6 +69,20 @@ namespace Core.Application.Services
         public RetrieveService(IMapper mapper, IRepository<TEntity, TIdentity> repository)
             : base(mapper, repository)
         {
+        }
+    }
+
+    public class RetrieveService<TEntity, TIdentity> : RetrieveService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, SimpleQuery>
+        where TEntity : IEntity<TIdentity>
+    {
+        public RetrieveService(IMapper mapper, IRepository<TEntity, TIdentity> repository)
+            : base(mapper, repository)
+        {
+        }
+
+        public override IEnumerable<TDto> GetQuery<TDto>(SimpleQuery query)
+        {
+            return GetAll<TDto>();
         }
     }
 }

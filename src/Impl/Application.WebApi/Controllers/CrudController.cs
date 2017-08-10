@@ -6,7 +6,7 @@ using System;
 namespace Core.Application.WebApi.Controllers
 {
     public class CrudController<TService, TIdentity, TReadDto, TEditDto, TQuery> : Controller
-        where TService : ICrudService<TIdentity, TEditDto>
+        where TService : ICrudService<TIdentity, TEditDto, TQuery>
         where TQuery : class
     {
         #region Fields
@@ -19,6 +19,24 @@ namespace Core.Application.WebApi.Controllers
             _service = service;
         }
         #endregion
+
+        protected ApiResult RunApi(Action func) =>
+            RunApi<int>(() => { func(); return 0; }, "API Error");
+        protected ApiResult RunApi<TResult>(Func<TResult> func) =>
+            RunApi<TResult>(func, "API Error");
+
+        protected ApiResult RunApi<TResult>(Func<TResult> func, string errorMessage)
+        {
+            try
+            {
+                var result = func();
+                return new SuccessResult<TResult>(result);
+            }
+            catch(Exception e)
+            {
+                return new ErrorResult(e.Message, errorMessage);
+            }
+        }
 
         #region API
         [HttpGet]
@@ -86,7 +104,7 @@ namespace Core.Application.WebApi.Controllers
     }
 
     public class CrudController<TService, TIdentity, TDto, TQuery> : CrudController<TService, TIdentity, TDto, TDto, TQuery>
-        where TService : ICrudService<TIdentity, TDto>
+        where TService : ICrudService<TIdentity, TDto, TQuery>
         where TQuery : class
     {
         #region Constructors
@@ -97,11 +115,11 @@ namespace Core.Application.WebApi.Controllers
         #endregion
     }
 
-    public class CrudController<TIdentity, TDto, TQuery> : CrudController<ICrudService<TIdentity, TDto>, TIdentity, TDto, TDto, TQuery>
+    public class CrudController<TIdentity, TDto, TQuery> : CrudController<ICrudService<TIdentity, TDto, TQuery>, TIdentity, TDto, TDto, TQuery>
         where TQuery : class
     {
         #region Constructors
-        protected CrudController(ICrudService<TIdentity, TDto> service)
+        protected CrudController(ICrudService<TIdentity, TDto, TQuery> service)
             : base(service)
         {
         }

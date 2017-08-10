@@ -8,7 +8,23 @@ using System.Linq;
 
 namespace Core.Application.Services
 {
-    public class SimpleCrudService<TEntity, TIdentity, TEditDto> : CrudService<TEntity, TIdentity, TEditDto>
+    public class SimpleCrudService<TEntity, TIdentity, TEditDto> : SimpleCrudService<TEntity, TIdentity, TEditDto, SimpleQuery>
+        where TEntity : IEntity<TIdentity>
+    {
+        public SimpleCrudService(
+            IMapper mapper
+            , IUnitOfWork unitOfWork
+            , IRepository<TEntity, TIdentity> repository
+            , IEnumerable<Expression<Func<TEntity, object>>> includes = null)
+            : base(mapper, unitOfWork, repository, includes)
+        {
+        }
+
+        public override IEnumerable<TDto> GetQuery<TDto>(SimpleQuery query)
+            => GetAll<TDto>();
+    }
+
+    public class SimpleCrudService<TEntity, TIdentity, TEditDto, TQuery> : CrudService<TEntity, TIdentity, TEditDto, TQuery>
         where TEntity : IEntity<TIdentity>
     {
         private readonly IEnumerable<Expression<Func<TEntity, object>>> _includes;

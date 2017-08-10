@@ -8,6 +8,15 @@ using Core.Domain.Data;
 
 namespace Core.Application.Services
 {
+    public abstract class CrudService<TEntity, TIdentity, TEditDto> : CrudService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TEditDto, SimpleQuery>
+        where TEntity : IEntity<TIdentity>
+    {
+        protected CrudService(IMapper mapper, IUnitOfWork unitOfWork, IRepository<TEntity, TIdentity> repository)
+            : base(mapper, unitOfWork, repository)
+        {
+        }
+    }
+
     public abstract class CrudService<TEntity, TIdentity, TEditDto, TQuery> : CrudService<IRepository<TEntity, TIdentity>, TEntity, TIdentity, TEditDto, TQuery>
         where TEntity : IEntity<TIdentity>
     {
