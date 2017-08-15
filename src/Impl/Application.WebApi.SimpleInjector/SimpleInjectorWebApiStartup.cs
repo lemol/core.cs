@@ -134,7 +134,7 @@ namespace Core.Application.WebApi.SimpleInjector
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;  
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  
                 })  
-                .AddJwtBearerAuthentication(o =>  
+                .AddJwtBearer(o =>  
                 {  
                     o.TokenValidationParameters = tokenValidationParameters;  
                 });  
