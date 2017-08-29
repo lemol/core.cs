@@ -29,7 +29,7 @@ namespace Core.Application.Services
         public virtual TDto Find<TDto>(TIdentity id)
         {
             var item = _repository
-                .Query(FindIncludes.ToArray())
+                .Query()
                 .FirstOrDefault(x => id.Equals(x.Id));
 
             var itemDto = _mapper.Map<TEntity, TDto>(item);
@@ -39,7 +39,7 @@ namespace Core.Application.Services
         public virtual IEnumerable<TDto> GetAll<TDto>()
         {
             var items = _repository
-                .Query(GetAllIncludes.ToArray())
+                .Query()
                 .ToList();
 
             var itemsDto = _mapper.Map<TEntity, TDto>(items);

@@ -10,7 +10,8 @@ namespace Core.Domain.Data
     {
         TEntity Find(TIdentity id);
         IQueryable<TEntity> Query();
-        IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] inculde);
+        [Obsolete]
+        IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] include);
         void Create(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
