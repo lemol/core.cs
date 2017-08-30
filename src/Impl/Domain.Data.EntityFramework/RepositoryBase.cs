@@ -35,7 +35,8 @@ namespace Core.Domain.Data.EntityFramework
 
         public TEntity Find(TIdentity id)
         {
-            return _dbSet.Find(id);
+            return Query()
+                .FirstOrDefault(x => x.Id.Equals(id));
         }
 
         public virtual IQueryable<TEntity> Query()
