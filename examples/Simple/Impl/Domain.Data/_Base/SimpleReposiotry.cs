@@ -1,8 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-using Simple.Domain.Model;
+using Domain.Model;
 
-namespace Simple.Domain.Data
+namespace Domain.Data
 {
     public abstract class SimpleReposiotry<TDbContext, TEntity> : Core.Domain.Data.EntityFramework.SimpleReposiotry<TDbContext, TEntity, Guid>, IRepository<TEntity>
         where TDbContext : DbContext
@@ -15,10 +15,10 @@ namespace Simple.Domain.Data
         }
     }
 
-    public class SimpleReposiotry<TEntity> : SimpleReposiotry<SimpleDbContext, TEntity>
+    public class SimpleReposiotry<TEntity> : SimpleReposiotry<DefaultDbContext, TEntity>
         where TEntity : class, IEntity
     {
-        public SimpleReposiotry(SimpleDbContext context)
+        public SimpleReposiotry(DefaultDbContext context)
             : base(context)
         {
             

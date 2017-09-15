@@ -1,0 +1,1 @@
+cd Impl/Application.WebApi && dotnet ef database update -c ApplicationDbContext -s ./Application.WebApi.csproj

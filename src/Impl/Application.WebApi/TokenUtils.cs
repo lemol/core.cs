@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Sedic.Application.WebApi
+namespace Core.Application.WebApi
 {
     public static class TokenUtils
     {

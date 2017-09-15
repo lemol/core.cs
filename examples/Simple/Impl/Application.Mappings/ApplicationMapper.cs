@@ -1,6 +1,6 @@
 using IM = Core.Infrastructure.Mappings.AutoMapper;
 
-namespace Simple.Application.Mappings
+namespace Application.Mappings
 {
     public class ApplicationMapper : IM.DefaultMapper, IApplicationMapper
     {

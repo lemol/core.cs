@@ -1,0 +1,35 @@
+﻿{
+  "Logging": {
+    "IncludeScopes": false,
+    "Debug": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "Console": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    }
+  },
+  "Data": {
+    "SqlServerDefaultConnection": {
+      "Provider": "SqlServer",
+      "ConnectionString": "Data Source=LTEXT01;Initial Catalog=Proin;Integrated Security=True"
+    },
+    "PostgreSqlDefaultConnection": {
+      "Provider": "PostgreSql",
+      "ConnectionString": "Host=192.168.100.4;Port=5432;Database=proin;Username=postgres;Password="
+    },
+    "DefaultConnection": {
+      "Provider": "Sqlite",
+      "ConnectionString": "Data Source=D:\\labs\\proin\\files\\proin.db"
+    }
+  },
+  "Jwt": {
+    "Secret": "Y2F0Y2hlciUyMHdvbmclMjBsb3ZlJTIwLm5ldA==",
+    "Issuer": "http://lemolsoft.io",
+    "Audience": "https://aud.lemolsoft.io",
+    "Expires": "1440"
+  }
+}

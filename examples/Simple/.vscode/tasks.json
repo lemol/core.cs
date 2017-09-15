@@ -6,6 +6,9 @@
         {
             "taskName": "build",
             "command": "dotnet build",
+            "options": {
+                "cwd": "${workspaceRoot}/Impl/Application.WebApi"
+            },
             "type": "shell",
             "group": "build",
             "presentation": {

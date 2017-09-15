@@ -1,7 +1,8 @@
 using System;
-using Simple.Domain.Model;
+using System.Linq;
+using Domain.Model;
 
-namespace Simple.Domain.Data
+namespace Domain.Data
 {
     public interface IRepository<TEntity> : Core.Domain.Data.IRepository<TEntity, Guid>
         where TEntity : IEntity

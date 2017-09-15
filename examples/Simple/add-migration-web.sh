@@ -1,0 +1,1 @@
+cd Impl/Application.WebApi && dotnet ef migrations add $1 -c ApplicationDbContext -s ./Application.WebApi.csproj

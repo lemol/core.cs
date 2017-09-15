@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-Application.WebApi-A178CE3E-8F82-40AA-87D3-9776936B62C5</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Application.Services\Application.Services.csproj" />
+    <ProjectReference Include="..\Domain.Data\Domain.Data.csproj" />
+    <ProjectReference Include="..\..\..\..\..\core.cs\src\Impl\Application.WebApi\Core.Application.WebApi.csproj" />
+    <ProjectReference Include="..\..\..\..\..\core.cs\src\Core\Infrastructure\Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\..\..\core.cs\src\Core\Domain\Core.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\core.cs\src\Impl\Application.WebApi.SimpleInjector\Core.Application.WebApi.SimpleInjector.csproj" />
+    <ProjectReference Include="..\Infrastructure.IoC\Infrastructure.IoC.csproj" />
+  </ItemGroup>
+</Project>

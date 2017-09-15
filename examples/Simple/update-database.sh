@@ -1,0 +1,1 @@
+cd Impl/Data.Domain && dotnet ef database update -c DefaultDbContext -s ../Application.WebApi/Application.WebApi.csproj

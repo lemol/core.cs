@@ -1,9 +1,9 @@
 using System;
 using Core.Domain.Data;
 using Microsoft.EntityFrameworkCore;
-using Simple.Domain.Model;
+using Domain.Model;
 
-namespace Simple.Domain.Data
+namespace Domain.Data
 {
     public class RepositoryBase<TDbContext, TEntity> : Core.Domain.Data.EntityFramework.RepositoryBase<TDbContext, TEntity, Guid>
         where TDbContext : DbContext
@@ -15,10 +15,10 @@ namespace Simple.Domain.Data
         }
     }
 
-    public abstract class RepositoryBase<TEntity> : Core.Domain.Data.EntityFramework.RepositoryBase<SimpleDbContext, TEntity, Guid>
+    public abstract class RepositoryBase<TEntity> : RepositoryBase<DefaultDbContext, TEntity>
         where TEntity : class, IEntity
     {
-        public RepositoryBase(SimpleDbContext context)
+        public RepositoryBase(DefaultDbContext context)
             : base(context)
         {
         }

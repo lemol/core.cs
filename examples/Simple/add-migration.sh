@@ -1,0 +1,1 @@
+cd Impl/Data.Domain && dotnet ef migrations add $1 -c DefaultDbContext -s ../Application.WebApi/Application.WebApi.csproj

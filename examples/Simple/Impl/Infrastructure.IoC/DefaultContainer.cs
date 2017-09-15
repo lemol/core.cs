@@ -1,12 +1,14 @@
-using Simple.Domain.Data;
-using Simple.Application;
-using Simple.Application.Mappings;
+using Domain.Data;
+using Application;
+using Application.Mappings;
+using Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System;
-using Simple.Application.Services;
+using Application.Services.Auditoria;
+using Domain.Data.Repositories.Auditoria;
 
-namespace Simple.Infrastructure.IoC
+namespace Infrastructure.IoC
 {
     public class DefaultContainer : Core.Infrastructure.IoC.SimpleInjector.SimpleInjectorContainer
     {
@@ -17,16 +19,23 @@ namespace Simple.Infrastructure.IoC
 
         public override void Setup(IServiceCollection services)
         {
-            AddScoped<SimpleDbContext>(() =>
-                services
-                    .BuildServiceProvider()
-                    .GetService<SimpleDbContext>()
-            );
-            Register<IUnitOfWork, SimpleUnitOfWork>();
+            if(services.Any(x => x.ServiceType == typeof(DefaultDbContext)))
+            {
+                AddScoped<DefaultDbContext>(() =>
+                    services
+                        .BuildServiceProvider()
+                        .GetService<DefaultDbContext>()
+                );
+            }
+
+            Register<IUnitOfWork, DefaultUnitOfWork>();
             Register<IApplicationMapper, ApplicationMapper>();
+            Register(typeof(SimpleCrudService<,>), typeof(SimpleCrudService<,>));
             Register(typeof(IRepository<>), typeof(SimpleReposiotry<>));
 
-            Register<IPersonService, PersonService>();
+            Register<IUtilizadorRepository, UtilizadorRepository>();
+
+            Register<IUtilizadorService, UtilizadorService>();
         }
     }
 }

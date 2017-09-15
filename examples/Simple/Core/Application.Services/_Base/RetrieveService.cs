@@ -1,8 +1,8 @@
 using System;
-using Simple.Domain.Data;
-using Simple.Domain.Model;
+using Domain.Data;
+using Domain.Model;
 
-namespace Simple.Application.Services
+namespace Application.Services
 {
     public class RetrieveService<TEntity> : Core.Application.Services.RetrieveService<TEntity, Guid>
         where TEntity : IEntity

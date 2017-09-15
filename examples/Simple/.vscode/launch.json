@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/Impl/Application.WebApi/bin/Debug/netcoreapp2.0/Simple.Application.WebApi.dll",
+            "program": "${workspaceRoot}/Impl/Application.WebApi/bin/Debug/netcoreapp2.0/Application.WebApi.dll",
             "args": [],
             "cwd": "${workspaceRoot}/Impl/Application.WebApi",
             "stopAtEntry": false,
@@ -30,6 +30,17 @@
             "sourceFileMap": {
                 "/Views": "${workspaceRoot}/Impl/Application.WebApi/Views"
             }
+        },
+        {
+            "name": "Run Play",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceRoot}/Impl/Application.Play/bin/Debug/netcoreapp2.0/Application.Play.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}/Impl/Application.WebApi",
+            "stopAtEntry": false,
+            "console": "internalConsole"
         },
         {
             "name": ".NET Core Attach",
