@@ -102,12 +102,14 @@ namespace Core.Application.Services
         public virtual TDto Find<TDto>(TIdentity id) => _retrieveService.Find<TDto>(id);
         public virtual IEnumerable<TDto> GetAll<TDto>() => _retrieveService.GetAll<TDto>();
         public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query) => _retrieveService.GetQuery<TDto>(query);
+        public virtual PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count) => _retrieveService.GetPagged<TDto>(query, page, count);
         #endregion
 
         #region IEditService
         public virtual TIdentity Create(TEditDto dto) => _editService.Create(dto);
         public virtual void Update(TIdentity id, TEditDto dto) => _editService.Update(id, dto);
         public virtual void Delete(TIdentity id) => _editService.Delete(id);
+
         #endregion
 
         #region Virtuais

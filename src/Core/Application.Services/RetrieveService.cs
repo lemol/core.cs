@@ -48,6 +48,23 @@ namespace Core.Application.Services
 
         public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query) =>
             throw new NotImplementedException();
+
+        public PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count)
+        {
+            var q = _repository
+                .Query();
+
+            var total = q.Count();
+
+            var result = q
+                .Skip((page-1) * count)
+                .Take(count)
+                .ToList();
+
+            var resultDto = _mapper.Map<TEntity, TDto>(result);
+
+            return new PaggedList<TDto>(resultDto, total);
+        }
         #endregion
 
         #region Virtuais

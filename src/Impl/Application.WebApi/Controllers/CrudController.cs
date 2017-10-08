@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Core.Application.Services;
 using System;
+using System.Security.Claims;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace Core.Application.WebApi.Controllers
 {
@@ -87,7 +90,8 @@ namespace Core.Application.WebApi.Controllers
             try
             {
                 _service.Update(id, value);
-                return new SuccessResult<object>(new { Id = id }, "Actualizado com sucesso");
+                var updated = _service.Find<TEditDto>(id);
+                return new SuccessResult<TEditDto>(updated, "Actualizado com sucesso");
             }
             catch (Exception e)
             {
@@ -99,6 +103,17 @@ namespace Core.Application.WebApi.Controllers
         public virtual void Delete(TIdentity id)
         {
             _service.Delete(id);
+        }
+        #endregion
+
+        #region Methods
+        protected Guid GetUserId()
+        {
+            var principal = (ClaimsPrincipal) User;
+            var cll = new IdentityOptions().ClaimsIdentity.UserIdClaimType;
+            var userId = principal.FindFirstValue(cll);
+            // var userId = userManager.GetUserId(User);
+            return Guid.Parse(userId);
         }
         #endregion
     }
