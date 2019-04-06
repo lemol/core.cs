@@ -77,8 +77,12 @@ namespace Core.Application.WebApi.Controllers
 
             var response = new
             {
-                access_token = encodedJwt,
-                expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds,
+                message = "Login com sucesso",
+                data = new
+                {
+                    access_token = encodedJwt,
+                    expires_in = (int)TimeSpan.FromMinutes(2).TotalSeconds,
+                }
             };
 
             return JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented });
