@@ -8,6 +8,6 @@ namespace Core.Application.Services
         IEnumerable<TDto> GetAll<TDto>();
         TDto Find<TDto>(TIdentity id);
         IEnumerable<TDto> GetQuery<TDto>(TQuery query);
-        PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count);
+        PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count, string sorter = null);
     }
 }

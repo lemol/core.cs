@@ -49,7 +49,7 @@ namespace Core.Application.Services
         public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query) =>
             throw new NotImplementedException();
 
-        public PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count)
+        public PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count, string sorter = null)
         {
             var q = _repository
                 .Query();
@@ -60,6 +60,8 @@ namespace Core.Application.Services
                 .Skip((page-1) * count)
                 .Take(count)
                 .ToList();
+
+            // TODO: Implement sorter
 
             var resultDto = _mapper.Map<TEntity, TDto>(result);
 

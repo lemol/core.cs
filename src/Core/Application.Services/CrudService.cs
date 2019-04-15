@@ -102,7 +102,7 @@ namespace Core.Application.Services
         public virtual TDto Find<TDto>(TIdentity id) => _retrieveService.Find<TDto>(id);
         public virtual IEnumerable<TDto> GetAll<TDto>() => _retrieveService.GetAll<TDto>();
         public virtual IEnumerable<TDto> GetQuery<TDto>(TQuery query) => _retrieveService.GetQuery<TDto>(query);
-        public virtual PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count) => _retrieveService.GetPagged<TDto>(query, page, count);
+        public virtual PaggedList<TDto> GetPagged<TDto>(TQuery query, int page, int count, string sorter = null) => _retrieveService.GetPagged<TDto>(query, page, count, sorter);
         #endregion
 
         #region IEditService
