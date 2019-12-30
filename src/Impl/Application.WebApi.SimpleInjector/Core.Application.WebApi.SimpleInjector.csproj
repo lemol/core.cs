@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageReference Include="SimpleInjector" Version="4.6.0" />
     <PackageReference Include="SimpleInjector.Integration.AspNetCore" Version="4.6.0" />
-    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.6.0" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.8.1" />
   </ItemGroup>
   <ItemGroup>
     <!-- <ProjectReference Include="..\..\Core\Infrastructure\Core.Infrastructure.csproj" /> -->
